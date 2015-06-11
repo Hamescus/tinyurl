@@ -1,0 +1,9 @@
+<% if logged_user.id == @user.id %>
+    <ol>
+    <% @user.links.each do |l| %>
+      <li><p><%= link_to l.secure_url, controller: "home", action: "redirect", id: l.secure_url %> || <%= link_to "Delete", links_delete_path(l), method: :delete %> </p></li>
+    <% end %>
+    </ol>
+<% else %>
+You have no permission to view this profile.
+<% end %>

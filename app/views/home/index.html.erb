@@ -1,0 +1,12 @@
+<% if logged_user %>
+    <p>Welcome, <%= logged_user.name %> | <%= link_to "My links", "users/#{logged_user.id}" %> | <%= link_to "Logout", '/logout' %> </p>
+<% else %>
+    <p>Be sure to <%= link_to 'login', '/login' %> if you want to keep track of your links.</p>
+    <p>Don't have an account yet? <%= link_to 'Sign Up!', '/signup' %></p>
+<% end %>
+
+<h1>Tinyurl</h1>
+<%= form_for @link do |f| %>
+  Link: <%= f.text_field :long_url %>
+  <%= f.submit %>
+<% end %>
